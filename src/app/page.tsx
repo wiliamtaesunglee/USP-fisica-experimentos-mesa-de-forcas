@@ -14,6 +14,7 @@ import Slide8Results from "@/components/slides/Slide8Results";
 import Slide9Conclusion from "@/components/slides/Slide9Conclusion";
 import SlideNav from "@/components/ui/SlideNav";
 import ScriptView from "@/components/debug/ScriptView";
+import Timer from "@/components/ui/Timer";
 import { useSlideNavigation } from "@/hooks/useSlideNavigation";
 
 type Mode = "landing" | "presentation" | "debug";
@@ -24,6 +25,7 @@ function PresentationView() {
   return (
     <main className="pb-14">
       <SlideNav />
+      <Timer />
       <Slide0Cover />
       <SectionDivider section={0} />
       <Slide1Intro />

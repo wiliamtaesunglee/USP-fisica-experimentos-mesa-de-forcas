@@ -2,6 +2,7 @@
 
 import { SCRIPT, ACT_PRESENTERS, TIMING_SUMMARY } from "@/lib/script-data";
 import { STUDENTS } from "@/lib/constants";
+import Timer from "@/components/ui/Timer";
 
 function isStageDirection(line: string) {
   return line.startsWith("(") && line.endsWith(")");
@@ -12,6 +13,7 @@ export default function ScriptView({ onBack }: { onBack: () => void }) {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <Timer />
       {/* Header */}
       <div className="sticky top-0 z-50 bg-background/90 backdrop-blur-sm border-b border-surface-light">
         <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
