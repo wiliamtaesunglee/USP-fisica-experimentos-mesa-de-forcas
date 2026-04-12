@@ -55,6 +55,7 @@ export const FORCE_COLORS = {
 } as const;
 
 export const SLIDE_IDS = [
+  "capa",
   "parte1",
   "introducao",
   "instrumentos",
@@ -70,6 +71,7 @@ export const SLIDE_IDS = [
 ] as const;
 
 export const SLIDE_LABELS = [
+  "Capa",
   "Parte 1",
   "Introdução",
   "Instrumentos",
@@ -91,7 +93,14 @@ export const SECTIONS = [
 ] as const;
 
 // Índices dos divisores dentro de SLIDE_IDS (para navegação)
-export const DIVIDER_INDICES = [0, 4, 8] as const;
+export const DIVIDER_INDICES = [1, 5, 9] as const;
+
+// Alunos
+export const STUDENTS = [
+  { name: "Caio", email: "caiogabilan@usp.br" },
+  { name: "Wiliam", email: "wiliam.lee@usp.br" },
+  { name: "Giovani", email: "geogiovane@usp.br" },
+] as const;
 
 // ========================================
 // UTILIDADES VETORIAIS

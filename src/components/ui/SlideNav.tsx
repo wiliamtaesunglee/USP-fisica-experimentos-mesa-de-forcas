@@ -4,13 +4,15 @@ import { useEffect, useState } from "react";
 import { SLIDE_IDS, SLIDE_LABELS, SECTIONS, DIVIDER_INDICES } from "@/lib/constants";
 
 function getSectionIndex(slideIndex: number): number {
-  if (slideIndex < 4) return 0;
-  if (slideIndex < 8) return 1;
+  if (slideIndex === 0) return -1; // capa
+  if (slideIndex < 5) return 0;
+  if (slideIndex < 9) return 1;
   return 2;
 }
 
 function getSectionColor(slideIndex: number): string {
-  return SECTIONS[getSectionIndex(slideIndex)].color;
+  const idx = getSectionIndex(slideIndex);
+  return idx >= 0 ? SECTIONS[idx].color : "#a1a1aa";
 }
 
 export default function SlideNav() {
@@ -52,7 +54,7 @@ export default function SlideNav() {
       {/* Progress dots (right side) */}
       <nav className="fixed right-6 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col gap-1.5">
         {SLIDE_IDS.map((id, i) => {
-          const isDivider = DIVIDER_INDICES.includes(i as 0 | 4 | 8);
+          const isDivider = (DIVIDER_INDICES as readonly number[]).includes(i);
           const color = getSectionColor(i);
 
           return (
@@ -107,7 +109,7 @@ export default function SlideNav() {
             className="text-xs font-bold px-2.5 py-1 rounded-full"
             style={{ backgroundColor: `${sectionColor}20`, color: sectionColor }}
           >
-            Parte {sectionIdx + 1}
+            {sectionIdx >= 0 ? `Parte ${sectionIdx + 1}` : "Capa"}
           </span>
 
           <span className="text-muted text-sm">
@@ -138,7 +140,7 @@ export default function SlideNav() {
       {/* Segmented progress bar */}
       <div className="fixed bottom-0 left-0 right-0 z-[51] h-0.5 flex">
         {SECTIONS.map((section, i) => {
-          const sectionStart = i * 4;
+          const sectionStart = 1 + i * 4; // offset by 1 for capa
           const sectionEnd = sectionStart + 3;
           const progress =
             activeIndex < sectionStart

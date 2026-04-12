@@ -1,5 +1,6 @@
 "use client";
 
+import Slide0Cover from "@/components/slides/Slide0Cover";
 import SectionDivider from "@/components/ui/SectionDivider";
 import Slide1Intro from "@/components/slides/Slide1Intro";
 import Slide2Instruments from "@/components/slides/Slide2Instruments";
@@ -19,6 +20,9 @@ export default function Home() {
   return (
     <main className="pb-14">
       <SlideNav />
+
+      {/* CAPA */}
+      <Slide0Cover />
 
       {/* PARTE 1 — Fundamentos */}
       <SectionDivider section={0} />
