@@ -18,39 +18,19 @@ export default function Slide3Setup() {
 
   useGSAP(
     () => {
-      gsap.from(".slide3-title", {
-        scrollTrigger: {
-          trigger: ref.current,
-          start: "top 70%",
-          toggleActions: "play none none none",
-        },
-        y: 40,
-        opacity: 0,
-        duration: 0.7,
+      gsap.from(".s3-title", {
+        scrollTrigger: { trigger: ref.current, start: "top 70%", toggleActions: "play none none none" },
+        y: 40, opacity: 0, duration: 0.7,
       });
 
-      gsap.from(".material-item", {
-        scrollTrigger: {
-          trigger: ref.current,
-          start: "top 65%",
-          toggleActions: "play none none none",
-        },
-        x: -30,
-        opacity: 0,
-        duration: 0.4,
-        stagger: 0.12,
-        ease: "power2.out",
+      gsap.from(".s3-item", {
+        scrollTrigger: { trigger: ref.current, start: "top 65%", toggleActions: "play none none none" },
+        x: -30, opacity: 0, duration: 0.4, stagger: 0.12, ease: "power2.out",
       });
 
-      gsap.from(".slide3-desc", {
-        scrollTrigger: {
-          trigger: ref.current,
-          start: "top 60%",
-          toggleActions: "play none none none",
-        },
-        opacity: 0,
-        y: 20,
-        duration: 0.5,
+      gsap.from(".s3-desc", {
+        scrollTrigger: { trigger: ref.current, start: "top 60%", toggleActions: "play none none none" },
+        opacity: 0, y: 20, duration: 0.5,
       });
     },
     { scope: ref }
@@ -60,7 +40,7 @@ export default function Slide3Setup() {
     <SlideContainer id="montagem">
       <div ref={ref} className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
         <div className="flex-1 space-y-6">
-          <h2 className="slide3-title text-3xl md:text-4xl font-bold">
+          <h2 className="s3-title text-3xl md:text-4xl font-bold">
             Montagem <span className="text-accent-green">Experimental</span>
           </h2>
 
@@ -71,7 +51,7 @@ export default function Slide3Setup() {
             {materials.map((mat, i) => (
               <div
                 key={i}
-                className="material-item flex items-center gap-3 p-3 rounded-lg bg-surface border border-surface-light"
+                className="s3-item flex items-center gap-3 p-3 rounded-lg bg-surface border border-surface-light"
               >
                 <span className="w-2 h-2 rounded-full bg-accent-green flex-shrink-0" />
                 <span className="text-base">{mat}</span>
@@ -79,9 +59,10 @@ export default function Slide3Setup() {
             ))}
           </div>
 
-          <p className="slide3-desc text-muted text-sm leading-relaxed">
-            As forças atuam em diferentes ângulos puxando o anel central através
-            de fios que passam pelas polias.
+          <p className="s3-desc text-muted text-sm leading-relaxed">
+            As três massas são fixas. Os ângulos entre as polias são ajustados
+            até que o anel central atinja o equilíbrio. A partir dos ângulos e
+            de uma massa conhecida, calculamos as demais.
           </p>
         </div>
 

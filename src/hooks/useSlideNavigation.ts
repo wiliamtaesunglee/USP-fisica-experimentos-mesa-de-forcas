@@ -1,10 +1,17 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import { SLIDE_IDS } from "@/lib/constants";
 
 export function useSlideNavigation() {
   const currentIndex = useRef(0);
+
+  const navigateTo = useCallback((index: number) => {
+    const clamped = Math.max(0, Math.min(index, SLIDE_IDS.length - 1));
+    document
+      .getElementById(SLIDE_IDS[clamped])
+      ?.scrollIntoView({ behavior: "smooth" });
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -48,9 +55,7 @@ export function useSlideNavigation() {
       }
 
       if (nextIndex !== currentIndex.current) {
-        document
-          .getElementById(SLIDE_IDS[nextIndex])
-          ?.scrollIntoView({ behavior: "smooth" });
+        navigateTo(nextIndex);
       }
     };
 
@@ -60,5 +65,7 @@ export function useSlideNavigation() {
       observer.disconnect();
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  }, [navigateTo]);
+
+  return { navigateTo, currentIndex };
 }

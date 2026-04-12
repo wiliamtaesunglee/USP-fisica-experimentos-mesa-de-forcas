@@ -11,7 +11,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Equilíbrio Estático de Três Forças",
   description:
-    "Verificação experimental da soma vetorial nula — Experimento de mesa de forças",
+    "Determinação de massas desconhecidas a partir do equilíbrio estático — Experimento de mesa de forças",
 };
 
 export default function RootLayout({

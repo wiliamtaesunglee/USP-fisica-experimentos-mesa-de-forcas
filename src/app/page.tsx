@@ -1,28 +1,30 @@
 "use client";
 
-import Slide1Title from "@/components/slides/Slide1Title";
-import Slide2Objective from "@/components/slides/Slide2Objective";
+import Slide1Intro from "@/components/slides/Slide1Intro";
+import Slide2Concept from "@/components/slides/Slide2Concept";
 import Slide3Setup from "@/components/slides/Slide3Setup";
-import Slide4Forces from "@/components/slides/Slide4Forces";
-import Slide5Equilibrium from "@/components/slides/Slide5Equilibrium";
-import Slide6Observations from "@/components/slides/Slide6Observations";
-import Slide7Conclusion from "@/components/slides/Slide7Conclusion";
-import ProgressIndicator from "@/components/ui/ProgressIndicator";
+import Slide4Procedure from "@/components/slides/Slide4Procedure";
+import Slide5Challenges from "@/components/slides/Slide5Challenges";
+import Slide6Data from "@/components/slides/Slide6Data";
+import Slide7Results from "@/components/slides/Slide7Results";
+import Slide8Conclusion from "@/components/slides/Slide8Conclusion";
+import SlideNav from "@/components/ui/SlideNav";
 import { useSlideNavigation } from "@/hooks/useSlideNavigation";
 
 export default function Home() {
   useSlideNavigation();
 
   return (
-    <main>
-      <ProgressIndicator />
-      <Slide1Title />
-      <Slide2Objective />
+    <main className="pb-14">
+      <SlideNav />
+      <Slide1Intro />
+      <Slide2Concept />
       <Slide3Setup />
-      <Slide4Forces />
-      <Slide5Equilibrium />
-      <Slide6Observations />
-      <Slide7Conclusion />
+      <Slide4Procedure />
+      <Slide5Challenges />
+      <Slide6Data />
+      <Slide7Results />
+      <Slide8Conclusion />
     </main>
   );
 }

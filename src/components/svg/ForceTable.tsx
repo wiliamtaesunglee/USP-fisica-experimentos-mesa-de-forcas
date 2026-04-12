@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { FORCES, polarToCartesian, degreesToRadians } from "@/lib/constants";
+import { DIAGRAM_FORCES as FORCES, polarToCartesian, degreesToRadians } from "@/lib/constants";
 
 const CX = 250;
 const CY = 250;
