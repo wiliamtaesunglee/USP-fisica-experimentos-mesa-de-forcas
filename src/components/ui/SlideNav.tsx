@@ -1,7 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { SLIDE_IDS, SLIDE_LABELS } from "@/lib/constants";
+import { SLIDE_IDS, SLIDE_LABELS, SECTIONS, DIVIDER_INDICES } from "@/lib/constants";
+
+function getSectionIndex(slideIndex: number): number {
+  if (slideIndex < 4) return 0;
+  if (slideIndex < 8) return 1;
+  return 2;
+}
+
+function getSectionColor(slideIndex: number): string {
+  return SECTIONS[getSectionIndex(slideIndex)].color;
+}
 
 export default function SlideNav() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -34,38 +44,51 @@ export default function SlideNav() {
   const prev = () => scrollTo(Math.max(0, activeIndex - 1));
   const next = () => scrollTo(Math.min(SLIDE_IDS.length - 1, activeIndex + 1));
 
+  const sectionIdx = getSectionIndex(activeIndex);
+  const sectionColor = getSectionColor(activeIndex);
+
   return (
     <>
       {/* Progress dots (right side) */}
-      <nav className="fixed right-6 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-3 hidden md:flex">
-        {SLIDE_IDS.map((id, i) => (
-          <button
-            key={id}
-            onClick={() => scrollTo(i)}
-            className="group flex items-center gap-3 justify-end"
-            aria-label={`Ir para ${SLIDE_LABELS[i]}`}
-          >
-            <span
-              className={`text-xs transition-opacity duration-300 ${
-                activeIndex === i
-                  ? "opacity-100 text-accent-blue"
-                  : "opacity-0 group-hover:opacity-70 text-muted"
-              }`}
+      <nav className="fixed right-6 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col gap-1.5">
+        {SLIDE_IDS.map((id, i) => {
+          const isDivider = DIVIDER_INDICES.includes(i as 0 | 4 | 8);
+          const color = getSectionColor(i);
+
+          return (
+            <button
+              key={id}
+              onClick={() => scrollTo(i)}
+              className={`group flex items-center gap-2.5 justify-end ${isDivider ? "mt-2" : ""}`}
+              aria-label={`Ir para ${SLIDE_LABELS[i]}`}
             >
-              {SLIDE_LABELS[i]}
-            </span>
-            <span
-              className={`block rounded-full transition-all duration-300 ${
-                activeIndex === i
-                  ? "w-3 h-3 bg-accent-blue"
-                  : "w-2 h-2 bg-surface-light group-hover:bg-muted"
-              }`}
-            />
-          </button>
-        ))}
+              <span
+                className={`text-xs transition-opacity duration-300 whitespace-nowrap ${
+                  activeIndex === i
+                    ? "opacity-100"
+                    : "opacity-0 group-hover:opacity-70"
+                }`}
+                style={{ color: activeIndex === i ? color : "#71717a" }}
+              >
+                {SLIDE_LABELS[i]}
+              </span>
+              <span
+                className={`block rounded-full transition-all duration-300 ${
+                  isDivider ? "w-2 h-2" : ""
+                }`}
+                style={{
+                  width: activeIndex === i ? "12px" : isDivider ? "8px" : "6px",
+                  height: activeIndex === i ? "12px" : isDivider ? "8px" : "6px",
+                  backgroundColor:
+                    activeIndex === i ? color : isDivider ? `${color}60` : "#27272a",
+                }}
+              />
+            </button>
+          );
+        })}
       </nav>
 
-      {/* Bottom bar with prev/next and slide counter */}
+      {/* Bottom bar */}
       <div className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-3 bg-background/80 backdrop-blur-sm border-t border-surface-light/50">
         <button
           onClick={prev}
@@ -78,11 +101,24 @@ export default function SlideNav() {
           Anterior
         </button>
 
-        <div className="flex items-center gap-2">
-          <span className="text-accent-blue font-bold">{activeIndex + 1}</span>
-          <span className="text-muted text-sm">/</span>
-          <span className="text-muted text-sm">{SLIDE_IDS.length}</span>
-          <span className="text-muted text-xs ml-2 hidden sm:inline">
+        <div className="flex items-center gap-3">
+          {/* Section indicator */}
+          <span
+            className="text-xs font-bold px-2.5 py-1 rounded-full"
+            style={{ backgroundColor: `${sectionColor}20`, color: sectionColor }}
+          >
+            Parte {sectionIdx + 1}
+          </span>
+
+          <span className="text-muted text-sm">
+            <span className="font-bold" style={{ color: sectionColor }}>
+              {activeIndex + 1}
+            </span>
+            {" / "}
+            {SLIDE_IDS.length}
+          </span>
+
+          <span className="text-muted text-xs hidden sm:inline">
             {SLIDE_LABELS[activeIndex]}
           </span>
         </div>
@@ -99,14 +135,30 @@ export default function SlideNav() {
         </button>
       </div>
 
-      {/* Progress bar at very bottom */}
-      <div className="fixed bottom-0 left-0 right-0 z-[51] h-0.5 bg-surface">
-        <div
-          className="h-full bg-accent-blue transition-all duration-500 ease-out"
-          style={{
-            width: `${((activeIndex + 1) / SLIDE_IDS.length) * 100}%`,
-          }}
-        />
+      {/* Segmented progress bar */}
+      <div className="fixed bottom-0 left-0 right-0 z-[51] h-0.5 flex">
+        {SECTIONS.map((section, i) => {
+          const sectionStart = i * 4;
+          const sectionEnd = sectionStart + 3;
+          const progress =
+            activeIndex < sectionStart
+              ? 0
+              : activeIndex >= sectionEnd
+                ? 100
+                : ((activeIndex - sectionStart + 1) / 4) * 100;
+
+          return (
+            <div key={section.id} className="flex-1 bg-surface">
+              <div
+                className="h-full transition-all duration-500 ease-out"
+                style={{
+                  width: `${progress}%`,
+                  backgroundColor: section.color,
+                }}
+              />
+            </div>
+          );
+        })}
       </div>
     </>
   );

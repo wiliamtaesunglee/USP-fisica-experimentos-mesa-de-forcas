@@ -12,27 +12,27 @@ const conclusions = [
   "Erro médio < 1% — teoria validada pela prática",
 ];
 
-export default function Slide8Conclusion() {
+export default function Slide9Conclusion() {
   const ref = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
-      gsap.from(".s8-title", {
+      gsap.from(".s9-title", {
         scrollTrigger: { trigger: ref.current, start: "top 70%", toggleActions: "play none none none" },
         y: 40, opacity: 0, duration: 0.7,
       });
 
-      gsap.from(".s8-item", {
+      gsap.from(".s9-item", {
         scrollTrigger: { trigger: ref.current, start: "top 65%", toggleActions: "play none none none" },
         x: -30, opacity: 0, stagger: 0.2, duration: 0.5,
       });
 
-      gsap.from(".s8-final", {
+      gsap.from(".s9-final", {
         scrollTrigger: { trigger: ref.current, start: "top 45%", toggleActions: "play none none none" },
         scale: 0.9, opacity: 0, duration: 0.8, ease: "power2.out",
       });
 
-      gsap.from(".s8-quote", {
+      gsap.from(".s9-quote", {
         scrollTrigger: { trigger: ref.current, start: "top 40%", toggleActions: "play none none none" },
         opacity: 0, y: 20, duration: 0.6, delay: 0.3,
       });
@@ -44,7 +44,7 @@ export default function Slide8Conclusion() {
     <SlideContainer id="conclusao">
       <div ref={ref} className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
         <div className="flex-1 space-y-8">
-          <h2 className="s8-title text-3xl md:text-4xl font-bold">
+          <h2 className="s9-title text-3xl md:text-4xl font-bold">
             <span className="text-accent-blue">Conclusão</span>
           </h2>
 
@@ -53,10 +53,7 @@ export default function Slide8Conclusion() {
               O experimento demonstrou que:
             </p>
             {conclusions.map((item, i) => (
-              <div
-                key={i}
-                className="s8-item flex items-center gap-3 p-3 rounded-lg bg-surface border border-surface-light"
-              >
+              <div key={i} className="s9-item flex items-center gap-3 p-3 rounded-lg bg-surface border border-surface-light">
                 <span className="w-6 h-6 rounded-full bg-accent-blue/20 text-accent-blue flex items-center justify-center text-sm font-bold flex-shrink-0">
                   {i + 1}
                 </span>
@@ -65,16 +62,14 @@ export default function Slide8Conclusion() {
             ))}
           </div>
 
-          <div className="s8-final p-6 rounded-xl bg-accent-blue/10 border border-accent-blue/30">
+          <div className="s9-final p-6 rounded-xl bg-accent-blue/10 border border-accent-blue/30">
             <p className="text-lg md:text-xl font-semibold text-center leading-relaxed">
               Equilíbrio não é igualdade de forças —{" "}
-              <span className="text-accent-blue">
-                é cancelamento vetorial.
-              </span>
+              <span className="text-accent-blue">é cancelamento vetorial.</span>
             </p>
           </div>
 
-          <p className="s8-quote text-muted text-sm text-center italic">
+          <p className="s9-quote text-muted text-sm text-center italic">
             &ldquo;Conhecendo uma única massa e os ângulos de equilíbrio,
             determinamos as demais — a geometria revela as forças.&rdquo;
           </p>
