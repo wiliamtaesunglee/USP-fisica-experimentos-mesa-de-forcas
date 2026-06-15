@@ -49,18 +49,18 @@ export default function BarChart() {
         scrollTrigger: {
           trigger: svgRef.current,
           start: "top 75%",
-          toggleActions: "play none none none",
+          toggleActions: "play none none reverse",
         },
       });
 
-      tl.from(".chart-axis", { opacity: 0, duration: 0.3 });
-      tl.from(".chart-tick", { opacity: 0, stagger: 0.03, duration: 0.2 });
+      tl.from(".chart-axis", { opacity: 0, duration: 0.5 });
+      tl.from(".chart-tick", { opacity: 0, stagger: 0.05, duration: 0.2 });
 
       // Bars grow from bottom using scaleY
       tl.from(".bar-theo", {
         scaleY: 0,
-        duration: 0.8,
-        stagger: 0.15,
+        duration: 1.2,
+        stagger: 0.25,
         ease: "power2.out",
       });
 
@@ -68,22 +68,22 @@ export default function BarChart() {
         ".bar-exp",
         {
           scaleY: 0,
-          duration: 0.8,
-          stagger: 0.15,
+          duration: 1.2,
+          stagger: 0.25,
           ease: "power2.out",
         },
         "-=0.6"
       );
 
-      tl.from(".bar-label", { opacity: 0, y: 10, stagger: 0.1, duration: 0.3 });
+      tl.from(".bar-label", { opacity: 0, y: 10, stagger: 0.15, duration: 0.5 });
       tl.from(".diff-badge", {
         scale: 0,
         opacity: 0,
-        stagger: 0.15,
-        duration: 0.4,
+        stagger: 0.25,
+        duration: 0.7,
         ease: "back.out(2)",
       });
-      tl.from(".chart-legend", { opacity: 0, x: -20, duration: 0.4 });
+      tl.from(".chart-legend", { opacity: 0, x: -20, duration: 0.7 });
     },
     { scope: svgRef }
   );

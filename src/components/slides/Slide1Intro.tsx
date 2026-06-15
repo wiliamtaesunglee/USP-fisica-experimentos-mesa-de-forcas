@@ -21,11 +21,11 @@ export default function Slide1Intro() {
     () => {
       const tl = gsap.timeline();
 
-      tl.from(".s1-title", { y: 60, opacity: 0, duration: 0.8, ease: "power3.out" });
-      tl.from(".s1-subtitle", { y: 40, opacity: 0, duration: 0.7, ease: "power3.out" }, "-=0.4");
-      tl.from(".s1-body", { y: 30, opacity: 0, duration: 0.6, ease: "power3.out" }, "-=0.3");
-      tl.from(".s1-mat", { x: -20, opacity: 0, stagger: 0.08, duration: 0.3 }, "-=0.2");
-      tl.from(".s1-diagram", { scale: 0.9, opacity: 0, duration: 0.6, ease: "power2.out" }, "-=0.4");
+      tl.from(".s1-title", { y: 60, opacity: 0, duration: 1.2, ease: "power3.out" });
+      tl.from(".s1-subtitle", { y: 40, opacity: 0, duration: 1.1, ease: "power3.out" }, "-=0.4");
+      tl.from(".s1-body", { y: 30, opacity: 0, duration: 1.0, ease: "power3.out" }, "-=0.3");
+      tl.from(".s1-mat", { x: -20, opacity: 0, stagger: 0.12, duration: 0.5 }, "-=0.2");
+      tl.from(".s1-diagram", { scale: 0.9, opacity: 0, duration: 1.0, ease: "power2.out" }, "-=0.4");
     },
     { scope: contentRef }
   );

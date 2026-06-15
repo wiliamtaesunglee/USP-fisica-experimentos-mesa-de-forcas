@@ -17,19 +17,19 @@ export default function DataTable() {
         scrollTrigger: {
           trigger: tableRef.current,
           start: "top 75%",
-          toggleActions: "play none none none",
+          toggleActions: "play none none reverse",
         },
       });
 
-      tl.from(".table-header", { opacity: 0, y: -10, duration: 0.3 });
+      tl.from(".table-header", { opacity: 0, y: -10, duration: 0.5 });
       tl.from(".table-row", {
         opacity: 0,
         y: 20,
-        stagger: 0.08,
-        duration: 0.3,
+        stagger: 0.12,
+        duration: 0.5,
         ease: "power2.out",
       });
-      tl.from(".table-footer", { opacity: 0, duration: 0.4 });
+      tl.from(".table-footer", { opacity: 0, duration: 0.7 });
     },
     { scope: tableRef }
   );

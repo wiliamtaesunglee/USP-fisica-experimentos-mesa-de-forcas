@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import SlideContainer from "@/components/ui/SlideContainer";
@@ -19,28 +20,33 @@ export default function Slide4Procedure() {
   useGSAP(
     () => {
       gsap.from(".s4-title", {
-        scrollTrigger: { trigger: ref.current, start: "top 70%", toggleActions: "play none none none" },
-        y: 40, opacity: 0, duration: 0.7,
+        scrollTrigger: { trigger: ref.current, start: "top 70%", toggleActions: "play none none reverse" },
+        y: 40, opacity: 0, duration: 1.1,
       });
 
       gsap.from(".s4-step", {
-        scrollTrigger: { trigger: ref.current, start: "top 65%", toggleActions: "play none none none" },
-        y: 40, opacity: 0, stagger: 0.2, duration: 0.5, ease: "power2.out",
+        scrollTrigger: { trigger: ref.current, start: "top 65%", toggleActions: "play none none reverse" },
+        y: 40, opacity: 0, stagger: 0.3, duration: 0.8, ease: "power2.out",
       });
 
       gsap.from(".s4-formula", {
-        scrollTrigger: { trigger: ref.current, start: "top 50%", toggleActions: "play none none none" },
-        scale: 0.8, opacity: 0, stagger: 0.2, duration: 0.5, ease: "back.out(2)",
+        scrollTrigger: { trigger: ref.current, start: "top 50%", toggleActions: "play none none reverse" },
+        scale: 0.8, opacity: 0, stagger: 0.3, duration: 0.8, ease: "back.out(2)",
+      });
+
+      gsap.from(".s4-photo", {
+        scrollTrigger: { trigger: ref.current, start: "top 60%", toggleActions: "play none none reverse" },
+        opacity: 0, x: 30, duration: 0.9, ease: "power2.out",
       });
 
       gsap.from(".s4-count", {
-        scrollTrigger: { trigger: ref.current, start: "top 45%", toggleActions: "play none none none" },
-        scale: 0, opacity: 0, duration: 0.6, ease: "back.out(3)",
+        scrollTrigger: { trigger: ref.current, start: "top 45%", toggleActions: "play none none reverse" },
+        scale: 0, opacity: 0, duration: 1.0, ease: "back.out(3)",
       });
 
       gsap.from(".s4-label", {
-        scrollTrigger: { trigger: ref.current, start: "top 45%", toggleActions: "play none none none" },
-        opacity: 0, y: 10, duration: 0.4, delay: 0.3,
+        scrollTrigger: { trigger: ref.current, start: "top 45%", toggleActions: "play none none reverse" },
+        opacity: 0, y: 10, duration: 0.7, delay: 0.3,
       });
     },
     { scope: ref }
@@ -53,18 +59,37 @@ export default function Slide4Procedure() {
           <span className="text-accent-amber">Procedimento</span>
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {steps.map((step, i) => (
-            <div
-              key={i}
-              className="s4-step flex items-start gap-4 p-5 rounded-xl bg-surface border border-surface-light"
-            >
-              <span className="text-2xl font-bold text-accent-amber/60 leading-none">
-                {step.num}
-              </span>
-              <p className="text-base leading-relaxed">{step.text}</p>
+        <div className="flex flex-col md:flex-row gap-6 items-stretch">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-4 flex-1">
+            {steps.map((step, i) => (
+              <div
+                key={i}
+                className="s4-step flex items-start gap-4 p-5 rounded-xl bg-surface border border-surface-light"
+              >
+                <span className="text-2xl font-bold text-accent-amber/60 leading-none">
+                  {step.num}
+                </span>
+                <p className="text-base leading-relaxed">{step.text}</p>
+              </div>
+            ))}
+          </div>
+
+          <figure className="s4-photo flex-shrink-0 w-full md:w-52 space-y-2">
+            <div className="overflow-hidden rounded-xl border border-surface-light">
+              <Image
+                src="/fotos/anel-central.jpg"
+                alt="Detalhe do anel central: os fios das três polias se encontram no anel, sobre o ponto de referência 0° do transferidor"
+                width={738}
+                height={1600}
+                className="w-full h-auto"
+                sizes="(min-width: 768px) 13rem, 100vw"
+              />
             </div>
-          ))}
+            <figcaption className="text-xs text-muted text-center leading-relaxed">
+              O <span className="text-accent-amber">anel central</span>: os fios se encontram e o
+              equilíbrio é atingido quando o anel fica centrado sobre o 0° do transferidor.
+            </figcaption>
+          </figure>
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">

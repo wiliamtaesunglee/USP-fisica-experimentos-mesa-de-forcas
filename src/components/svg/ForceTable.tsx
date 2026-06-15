@@ -19,7 +19,7 @@ export default function ForceTable() {
         scrollTrigger: {
           trigger: svgRef.current,
           start: "top 75%",
-          toggleActions: "play none none none",
+          toggleActions: "play none none reverse",
         },
       });
 
@@ -27,31 +27,31 @@ export default function ForceTable() {
       tl.from(".table-circle", {
         scale: 0,
         transformOrigin: `${CX}px ${CY}px`,
-        duration: 0.6,
+        duration: 1.0,
         ease: "power2.out",
       });
 
       // 2. Degree markings
       tl.from(".degree-mark", {
         opacity: 0,
-        duration: 0.4,
-        stagger: 0.02,
+        duration: 0.7,
+        stagger: 0.04,
       });
 
       // 3. Pulleys slide in
       tl.from(".pulley", {
         scale: 0,
         opacity: 0,
-        duration: 0.4,
-        stagger: 0.15,
+        duration: 0.7,
+        stagger: 0.25,
         ease: "back.out(2)",
       });
 
       // 4. Wires draw
       tl.from(".wire", {
         attr: { x2: CX, y2: CY },
-        duration: 0.5,
-        stagger: 0.15,
+        duration: 0.8,
+        stagger: 0.25,
         ease: "power2.out",
       });
 
@@ -59,8 +59,8 @@ export default function ForceTable() {
       tl.from(".mass-block", {
         y: -30,
         opacity: 0,
-        duration: 0.4,
-        stagger: 0.15,
+        duration: 0.7,
+        stagger: 0.25,
         ease: "bounce.out",
       });
 
@@ -75,7 +75,7 @@ export default function ForceTable() {
               y2: polarToCartesian(force.angle, force.magnitude, SCALE, CX, CY).y,
             },
             opacity: 1,
-            duration: 0.5,
+            duration: 0.8,
             ease: "power2.out",
           },
           i === 0 ? "+=0.1" : "-=0.3"

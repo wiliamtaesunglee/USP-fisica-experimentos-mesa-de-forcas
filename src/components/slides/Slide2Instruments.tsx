@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import SlideContainer from "@/components/ui/SlideContainer";
@@ -32,18 +33,23 @@ export default function Slide2Instruments() {
   useGSAP(
     () => {
       gsap.from(".s2i-title", {
-        scrollTrigger: { trigger: ref.current, start: "top 70%", toggleActions: "play none none none" },
-        y: 40, opacity: 0, duration: 0.7,
+        scrollTrigger: { trigger: ref.current, start: "top 70%", toggleActions: "play none none reverse" },
+        y: 40, opacity: 0, duration: 1.1,
       });
 
       gsap.from(".s2i-card", {
-        scrollTrigger: { trigger: ref.current, start: "top 65%", toggleActions: "play none none none" },
-        y: 40, opacity: 0, stagger: 0.2, duration: 0.5, ease: "power2.out",
+        scrollTrigger: { trigger: ref.current, start: "top 65%", toggleActions: "play none none reverse" },
+        y: 40, opacity: 0, stagger: 0.3, duration: 0.8, ease: "power2.out",
+      });
+
+      gsap.from(".s2i-photo", {
+        scrollTrigger: { trigger: ref.current, start: "top 55%", toggleActions: "play none none reverse" },
+        opacity: 0, y: 25, duration: 0.9, ease: "power2.out",
       });
 
       gsap.from(".s2i-note", {
-        scrollTrigger: { trigger: ref.current, start: "top 50%", toggleActions: "play none none none" },
-        opacity: 0, y: 15, duration: 0.4,
+        scrollTrigger: { trigger: ref.current, start: "top 50%", toggleActions: "play none none reverse" },
+        opacity: 0, y: 15, duration: 0.7,
       });
     },
     { scope: ref }
@@ -74,6 +80,24 @@ export default function Slide2Instruments() {
             </div>
           ))}
         </div>
+
+        <figure className="s2i-photo space-y-2">
+          <div className="overflow-hidden rounded-xl border border-surface-light">
+            <Image
+              src="/fotos/montagem-geral.jpg"
+              alt="Mesa de forças montada: transferidor, polias nas bordas, fios convergindo no anel central e massas penduradas"
+              width={1600}
+              height={737}
+              className="w-full h-auto"
+              sizes="(min-width: 768px) 48rem, 100vw"
+            />
+          </div>
+          <figcaption className="text-xs text-muted text-center">
+            Montagem real: a <span className="text-accent-blue">mesa de forças</span> com o
+            transferidor, as polias presas nas bordas e os fios convergindo no anel central, cada
+            um tensionado por uma massa pendurada.
+          </figcaption>
+        </figure>
 
         <p className="s2i-note text-muted text-sm text-center max-w-xl mx-auto leading-relaxed">
           As incertezas instrumentais propagam-se para o resultado final.

@@ -13,18 +13,18 @@ export default function Slide5Data() {
   useGSAP(
     () => {
       gsap.from(".s5d-title", {
-        scrollTrigger: { trigger: ref.current, start: "top 70%", toggleActions: "play none none none" },
-        y: 40, opacity: 0, duration: 0.7,
+        scrollTrigger: { trigger: ref.current, start: "top 70%", toggleActions: "play none none reverse" },
+        y: 40, opacity: 0, duration: 1.1,
       });
 
       gsap.from(".s5d-theo", {
-        scrollTrigger: { trigger: ref.current, start: "top 65%", toggleActions: "play none none none" },
-        scale: 0.8, opacity: 0, stagger: 0.15, duration: 0.4, ease: "back.out(2)",
+        scrollTrigger: { trigger: ref.current, start: "top 65%", toggleActions: "play none none reverse" },
+        scale: 0.8, opacity: 0, stagger: 0.25, duration: 0.7, ease: "back.out(2)",
       });
 
       gsap.from(".s5d-table", {
-        scrollTrigger: { trigger: ref.current, start: "top 55%", toggleActions: "play none none none" },
-        opacity: 0, y: 30, duration: 0.5,
+        scrollTrigger: { trigger: ref.current, start: "top 55%", toggleActions: "play none none reverse" },
+        opacity: 0, y: 30, duration: 0.8,
       });
     },
     { scope: ref }

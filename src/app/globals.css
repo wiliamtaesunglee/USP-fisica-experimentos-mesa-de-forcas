@@ -58,3 +58,23 @@ body {
 .katex-display {
   margin: 1rem 0;
 }
+
+@media print {
+  html {
+    scroll-snap-type: none;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  .katex {
+    color: black !important;
+  }
+
+  .break-after-page {
+    break-after: page;
+  }
+
+}

@@ -18,7 +18,7 @@ export default function VectorDiagram() {
         scrollTrigger: {
           trigger: svgRef.current,
           start: "top 80%",
-          toggleActions: "play none none none",
+          toggleActions: "play none none reverse",
         },
       });
 
@@ -34,7 +34,7 @@ export default function VectorDiagram() {
                 .y,
             },
             opacity: 1,
-            duration: 0.6,
+            duration: 1.0,
             ease: "power2.out",
           },
           i * 0.3
@@ -42,7 +42,7 @@ export default function VectorDiagram() {
 
         tl.from(
           `.vector-label-${force.id}`,
-          { opacity: 0, scale: 0, duration: 0.3, ease: "back.out" },
+          { opacity: 0, scale: 0, duration: 0.5, ease: "back.out" },
           "-=0.2"
         );
       });
@@ -50,7 +50,7 @@ export default function VectorDiagram() {
       // Glow pulse on all vectors
       tl.to(".vector-line", {
         filter: "drop-shadow(0 0 6px currentColor)",
-        duration: 0.4,
+        duration: 0.7,
         yoyo: true,
         repeat: 1,
       });
@@ -59,7 +59,7 @@ export default function VectorDiagram() {
       tl.from(".equilibrium-label", {
         opacity: 0,
         scale: 0,
-        duration: 0.5,
+        duration: 0.8,
         ease: "back.out(2)",
       });
     },

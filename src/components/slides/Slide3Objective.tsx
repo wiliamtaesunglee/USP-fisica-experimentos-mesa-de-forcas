@@ -19,23 +19,23 @@ export default function Slide3Objective() {
   useGSAP(
     () => {
       gsap.from(".s3o-title", {
-        scrollTrigger: { trigger: ref.current, start: "top 70%", toggleActions: "play none none none" },
-        y: 40, opacity: 0, duration: 0.7,
+        scrollTrigger: { trigger: ref.current, start: "top 70%", toggleActions: "play none none reverse" },
+        y: 40, opacity: 0, duration: 1.1,
       });
 
       gsap.from(".s3o-obj", {
-        scrollTrigger: { trigger: ref.current, start: "top 65%", toggleActions: "play none none none" },
-        scale: 0.9, opacity: 0, duration: 0.5, ease: "back.out(2)",
+        scrollTrigger: { trigger: ref.current, start: "top 65%", toggleActions: "play none none reverse" },
+        scale: 0.9, opacity: 0, duration: 0.8, ease: "back.out(2)",
       });
 
       gsap.from(".s3o-formula", {
-        scrollTrigger: { trigger: ref.current, start: "top 60%", toggleActions: "play none none none" },
-        x: 30, opacity: 0, stagger: 0.15, duration: 0.4,
+        scrollTrigger: { trigger: ref.current, start: "top 60%", toggleActions: "play none none reverse" },
+        x: 30, opacity: 0, stagger: 0.25, duration: 0.7,
       });
 
       gsap.from(".s3o-lim", {
-        scrollTrigger: { trigger: ref.current, start: "top 50%", toggleActions: "play none none none" },
-        x: -20, opacity: 0, stagger: 0.1, duration: 0.3,
+        scrollTrigger: { trigger: ref.current, start: "top 50%", toggleActions: "play none none reverse" },
+        x: -20, opacity: 0, stagger: 0.15, duration: 0.5,
       });
     },
     { scope: ref }
@@ -63,13 +63,18 @@ export default function Slide3Objective() {
               Equações utilizadas
             </p>
             <div className="s3o-formula p-3 rounded-lg bg-surface border border-surface-light">
-              <MathFormula tex="\sum F_x = 0 \quad \Rightarrow \quad F_1\cos(\alpha) + F_2\cos(\beta) + F_3 = 0" display />
+              <MathFormula tex="\sum F_x = 0 \;\Rightarrow\; \textcolor{#ef4444}{F_1}\cos(\alpha) + \textcolor{#3b82f6}{F_2}\cos(\beta) + \textcolor{#f59e0b}{F_3} = 0" display />
             </div>
             <div className="s3o-formula p-3 rounded-lg bg-surface border border-surface-light">
-              <MathFormula tex="\sum F_y = 0 \quad \Rightarrow \quad F_1\sin(\alpha) + F_2\sin(\beta) = 0" display />
+              <MathFormula tex="\sum F_y = 0 \;\Rightarrow\; \textcolor{#ef4444}{F_1}\sin(\alpha) + \textcolor{#3b82f6}{F_2}\sin(\beta) = 0" display />
             </div>
             <div className="s3o-formula p-3 rounded-lg bg-surface border border-accent-amber/20">
-              <MathFormula tex="m_{\text{calc}} = m_{\text{ref}} \cdot \frac{\cos(\alpha)}{\cos(\beta)}" display />
+              <MathFormula tex="m_{\text{calc}} = \textcolor{#f59e0b}{m_{\text{ref}}} \cdot \frac{\cos(\alpha)}{\cos(\beta)}" display />
+            </div>
+            <div className="flex flex-wrap gap-2 text-xs text-muted">
+              <span><span className="inline-block w-2 h-2 rounded-full bg-accent-amber mr-1" />F₃ = laranja (ref, 0°)</span>
+              <span><span className="inline-block w-2 h-2 rounded-full bg-accent-red mr-1" />F₁ = vermelho (α)</span>
+              <span><span className="inline-block w-2 h-2 rounded-full bg-accent-blue mr-1" />F₂ = azul (β)</span>
             </div>
           </div>
 

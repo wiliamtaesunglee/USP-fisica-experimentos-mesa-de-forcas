@@ -38,18 +38,18 @@ export default function Slide7Relations() {
   useGSAP(
     () => {
       gsap.from(".s7r-title", {
-        scrollTrigger: { trigger: ref.current, start: "top 70%", toggleActions: "play none none none" },
-        y: 40, opacity: 0, duration: 0.7,
+        scrollTrigger: { trigger: ref.current, start: "top 70%", toggleActions: "play none none reverse" },
+        y: 40, opacity: 0, duration: 1.1,
       });
 
       gsap.from(".s7r-card", {
-        scrollTrigger: { trigger: ref.current, start: "top 65%", toggleActions: "play none none none" },
-        x: -30, opacity: 0, stagger: 0.2, duration: 0.5,
+        scrollTrigger: { trigger: ref.current, start: "top 65%", toggleActions: "play none none reverse" },
+        x: -30, opacity: 0, stagger: 0.3, duration: 0.8,
       });
 
       // SVG: vectors form a closed triangle
       const tl = gsap.timeline({
-        scrollTrigger: { trigger: svgRef.current, start: "top 70%", toggleActions: "play none none none" },
+        scrollTrigger: { trigger: svgRef.current, start: "top 70%", toggleActions: "play none none reverse" },
       });
 
       // Draw vectors from center
@@ -58,7 +58,7 @@ export default function Slide7Relations() {
         tl.fromTo(
           `.s7r-vec-${force.id}`,
           { attr: { x2: CX, y2: CY }, opacity: 0 },
-          { attr: { x2: end.x, y2: end.y }, opacity: 1, duration: 0.4 },
+          { attr: { x2: end.x, y2: end.y }, opacity: 1, duration: 0.7 },
           i * 0.15
         );
       });
@@ -67,12 +67,12 @@ export default function Slide7Relations() {
       tl.from(".s7r-triangle", {
         strokeDashoffset: 500,
         opacity: 0,
-        duration: 1.2,
+        duration: 1.8,
         ease: "power2.out",
       });
 
       tl.from(".s7r-label", {
-        opacity: 0, scale: 0, duration: 0.4, ease: "back.out(2)",
+        opacity: 0, scale: 0, duration: 0.7, ease: "back.out(2)",
       });
     },
     { scope: ref }

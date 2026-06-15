@@ -20,34 +20,34 @@ export default function SectionDivider({ section }: SectionDividerProps) {
         scrollTrigger: {
           trigger: ref.current,
           start: "top 80%",
-          toggleActions: "play none none none",
+          toggleActions: "play none none reverse",
         },
       });
 
       tl.from(".sd-number", {
         scale: 0,
         opacity: 0,
-        duration: 0.6,
+        duration: 1.0,
         ease: "back.out(3)",
       });
 
       tl.from(
         ".sd-title",
-        { y: 30, opacity: 0, duration: 0.5, ease: "power3.out" },
+        { y: 30, opacity: 0, duration: 0.8, ease: "power3.out" },
         "-=0.2"
       );
 
       tl.from(
         ".sd-line",
-        { scaleX: 0, duration: 0.4, ease: "power2.out" },
+        { scaleX: 0, duration: 0.7, ease: "power2.out" },
         "-=0.2"
       );
 
       tl.from(".sd-step", {
         opacity: 0,
         y: 10,
-        stagger: 0.1,
-        duration: 0.3,
+        stagger: 0.15,
+        duration: 0.5,
       });
     },
     { scope: ref }

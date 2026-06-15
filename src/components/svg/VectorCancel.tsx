@@ -18,7 +18,7 @@ export default function VectorCancel() {
         scrollTrigger: {
           trigger: svgRef.current,
           start: "top 75%",
-          toggleActions: "play none none none",
+          toggleActions: "play none none reverse",
         },
       });
 
@@ -31,7 +31,7 @@ export default function VectorCancel() {
           {
             attr: { x2: end.x, y2: end.y },
             opacity: 1,
-            duration: 0.5,
+            duration: 0.8,
             ease: "power2.out",
           },
           i * 0.2
@@ -39,7 +39,7 @@ export default function VectorCancel() {
       });
 
       // Pause to let viewer see vectors
-      tl.to({}, { duration: 0.6 });
+      tl.to({}, { duration: 1.0 });
 
       // Vectors converge back to center and disappear
       FORCES.forEach((force) => {
@@ -48,7 +48,7 @@ export default function VectorCancel() {
           {
             attr: { x2: CX, y2: CY },
             opacity: 0,
-            duration: 0.8,
+            duration: 1.2,
             ease: "power2.in",
           },
           "cancel"
@@ -62,7 +62,7 @@ export default function VectorCancel() {
         {
           scale: 1.5,
           opacity: 0,
-          duration: 0.6,
+          duration: 1.0,
           ease: "power2.out",
         }
       );
@@ -71,7 +71,7 @@ export default function VectorCancel() {
       tl.from(".cancel-zero", {
         scale: 0,
         opacity: 0,
-        duration: 0.6,
+        duration: 1.0,
         ease: "back.out(3)",
       });
 
@@ -79,7 +79,7 @@ export default function VectorCancel() {
       tl.from(".cancel-result", {
         opacity: 0,
         y: 10,
-        duration: 0.5,
+        duration: 0.8,
       });
     },
     { scope: svgRef }

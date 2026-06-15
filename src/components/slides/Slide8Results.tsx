@@ -37,23 +37,23 @@ export default function Slide8Results() {
   useGSAP(
     () => {
       gsap.from(".s8r-title", {
-        scrollTrigger: { trigger: ref.current, start: "top 70%", toggleActions: "play none none none" },
-        y: 40, opacity: 0, duration: 0.7,
+        scrollTrigger: { trigger: ref.current, start: "top 70%", toggleActions: "play none none reverse" },
+        y: 40, opacity: 0, duration: 1.1,
       });
 
       gsap.from(".s8r-chart", {
-        scrollTrigger: { trigger: ref.current, start: "top 60%", toggleActions: "play none none none" },
-        opacity: 0, scale: 0.95, duration: 0.5,
+        scrollTrigger: { trigger: ref.current, start: "top 60%", toggleActions: "play none none reverse" },
+        opacity: 0, scale: 0.95, duration: 0.8,
       });
 
       gsap.from(".s8r-row", {
-        scrollTrigger: { trigger: ref.current, start: "top 50%", toggleActions: "play none none none" },
-        y: 20, opacity: 0, stagger: 0.1, duration: 0.3,
+        scrollTrigger: { trigger: ref.current, start: "top 50%", toggleActions: "play none none reverse" },
+        y: 20, opacity: 0, stagger: 0.15, duration: 0.5,
       });
 
       gsap.from(".s8r-badge", {
-        scrollTrigger: { trigger: ref.current, start: "top 40%", toggleActions: "play none none none" },
-        scale: 0, opacity: 0, duration: 0.6, ease: "back.out(3)",
+        scrollTrigger: { trigger: ref.current, start: "top 40%", toggleActions: "play none none reverse" },
+        scale: 0, opacity: 0, duration: 1.0, ease: "back.out(3)",
       });
     },
     { scope: ref }

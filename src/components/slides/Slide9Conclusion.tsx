@@ -18,23 +18,23 @@ export default function Slide9Conclusion() {
   useGSAP(
     () => {
       gsap.from(".s9-title", {
-        scrollTrigger: { trigger: ref.current, start: "top 70%", toggleActions: "play none none none" },
-        y: 40, opacity: 0, duration: 0.7,
+        scrollTrigger: { trigger: ref.current, start: "top 70%", toggleActions: "play none none reverse" },
+        y: 40, opacity: 0, duration: 1.1,
       });
 
       gsap.from(".s9-item", {
-        scrollTrigger: { trigger: ref.current, start: "top 65%", toggleActions: "play none none none" },
-        x: -30, opacity: 0, stagger: 0.2, duration: 0.5,
+        scrollTrigger: { trigger: ref.current, start: "top 65%", toggleActions: "play none none reverse" },
+        x: -30, opacity: 0, stagger: 0.3, duration: 0.8,
       });
 
       gsap.from(".s9-final", {
-        scrollTrigger: { trigger: ref.current, start: "top 45%", toggleActions: "play none none none" },
-        scale: 0.9, opacity: 0, duration: 0.8, ease: "power2.out",
+        scrollTrigger: { trigger: ref.current, start: "top 45%", toggleActions: "play none none reverse" },
+        scale: 0.9, opacity: 0, duration: 1.2, ease: "power2.out",
       });
 
       gsap.from(".s9-quote", {
-        scrollTrigger: { trigger: ref.current, start: "top 40%", toggleActions: "play none none none" },
-        opacity: 0, y: 20, duration: 0.6, delay: 0.3,
+        scrollTrigger: { trigger: ref.current, start: "top 40%", toggleActions: "play none none reverse" },
+        opacity: 0, y: 20, duration: 1.0, delay: 0.3,
       });
     },
     { scope: ref }

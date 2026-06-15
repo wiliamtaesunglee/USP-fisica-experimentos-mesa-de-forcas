@@ -16,45 +16,45 @@ export default function Slide0Cover() {
       tl.from(".cover-usp", {
         y: -30,
         opacity: 0,
-        duration: 0.6,
+        duration: 1.0,
         ease: "power3.out",
       });
 
       tl.from(
         ".cover-course",
-        { y: 20, opacity: 0, duration: 0.5, ease: "power3.out" },
+        { y: 20, opacity: 0, duration: 0.8, ease: "power3.out" },
         "-=0.3"
       );
 
       tl.from(
         ".cover-line",
-        { scaleX: 0, duration: 0.4, ease: "power2.out" },
+        { scaleX: 0, duration: 0.7, ease: "power2.out" },
         "-=0.2"
       );
 
       tl.from(
         ".cover-title",
-        { y: 40, opacity: 0, duration: 0.7, ease: "power3.out" },
+        { y: 40, opacity: 0, duration: 1.1, ease: "power3.out" },
         "-=0.2"
       );
 
       tl.from(
         ".cover-subtitle",
-        { y: 20, opacity: 0, duration: 0.5, ease: "power3.out" },
+        { y: 20, opacity: 0, duration: 0.8, ease: "power3.out" },
         "-=0.3"
       );
 
       tl.from(".cover-student", {
         y: 20,
         opacity: 0,
-        stagger: 0.15,
-        duration: 0.4,
+        stagger: 0.25,
+        duration: 0.7,
         ease: "power2.out",
       });
 
       tl.from(
         ".cover-semester",
-        { opacity: 0, duration: 0.4 },
+        { opacity: 0, duration: 0.7 },
         "-=0.2"
       );
     },

@@ -24,17 +24,17 @@ export default function Slide6Challenges() {
   useGSAP(
     () => {
       gsap.from(".s6c-title", {
-        scrollTrigger: { trigger: ref.current, start: "top 70%", toggleActions: "play none none none" },
-        y: 40, opacity: 0, duration: 0.7,
+        scrollTrigger: { trigger: ref.current, start: "top 70%", toggleActions: "play none none reverse" },
+        y: 40, opacity: 0, duration: 1.1,
       });
 
       gsap.from(".s6c-card", {
-        scrollTrigger: { trigger: ref.current, start: "top 65%", toggleActions: "play none none none" },
-        y: 30, opacity: 0, stagger: 0.15, duration: 0.4,
+        scrollTrigger: { trigger: ref.current, start: "top 65%", toggleActions: "play none none reverse" },
+        y: 30, opacity: 0, stagger: 0.25, duration: 0.7,
       });
 
       const tl = gsap.timeline({
-        scrollTrigger: { trigger: svgRef.current, start: "top 70%", toggleActions: "play none none none" },
+        scrollTrigger: { trigger: svgRef.current, start: "top 70%", toggleActions: "play none none reverse" },
       });
 
       FORCES.forEach((force, i) => {
@@ -42,7 +42,7 @@ export default function Slide6Challenges() {
         tl.fromTo(
           `.s6c-vec-${force.id}`,
           { attr: { x2: CX, y2: CY }, opacity: 0 },
-          { attr: { x2: end.x, y2: end.y }, opacity: 1, duration: 0.4 },
+          { attr: { x2: end.x, y2: end.y }, opacity: 1, duration: 0.7 },
           i * 0.15
         );
       });
@@ -56,8 +56,8 @@ export default function Slide6Challenges() {
         ease: "none",
       });
 
-      tl.to(".s6c-vec", { x: 0, y: 0, duration: 0.5, ease: "power2.out" });
-      tl.from(".s6c-stable", { opacity: 0, scale: 0, duration: 0.4, ease: "back.out(2)" });
+      tl.to(".s6c-vec", { x: 0, y: 0, duration: 0.8, ease: "power2.out" });
+      tl.from(".s6c-stable", { opacity: 0, scale: 0, duration: 0.7, ease: "back.out(2)" });
     },
     { scope: ref }
   );
