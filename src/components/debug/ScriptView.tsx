@@ -1,7 +1,6 @@
 "use client";
 
 import { SCRIPT, ACT_PRESENTERS, TIMING_SUMMARY } from "@/lib/script-data";
-import { STUDENTS } from "@/lib/constants";
 import Timer from "@/components/ui/Timer";
 
 function isStageDirection(line: string) {
@@ -65,7 +64,7 @@ export default function ScriptView({ onBack }: { onBack: () => void }) {
                 <p className="text-xs text-muted mt-1">{t.time}</p>
                 <p className="text-lg font-bold mt-1">{t.duration}</p>
                 <p className="text-xs text-muted mt-1">
-                  {STUDENTS[i].name}
+                  {ACT_PRESENTERS[(i + 1) as keyof typeof ACT_PRESENTERS]}
                 </p>
               </div>
             ))}
@@ -106,12 +105,12 @@ export default function ScriptView({ onBack }: { onBack: () => void }) {
                         Ato {scene.act} — {scene.actTitle}
                       </h2>
                       <p className="text-sm text-muted mt-1">
+                        Apresentador —{" "}
                         {
                           ACT_PRESENTERS[
                             scene.act as keyof typeof ACT_PRESENTERS
                           ]
-                        }{" "}
-                        — {STUDENTS[scene.act - 1].name}
+                        }
                       </p>
                     </div>
                   </div>

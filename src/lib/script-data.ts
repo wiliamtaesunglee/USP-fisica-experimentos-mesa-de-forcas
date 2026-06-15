@@ -317,10 +317,11 @@ export const SCRIPT: ScriptScene[] = [
 ];
 
 // Mapeamento: qual apresentador fala em cada ato
+// (definido pela equipe — independe da ordem da capa)
 export const ACT_PRESENTERS = {
-  1: "Apresentador 1",
-  2: "Apresentador 2",
-  3: "Apresentador 3",
+  1: "Caio",
+  2: "Giovani",
+  3: "Wiliam",
 } as const;
 
 // Resumo de timing
