@@ -55,6 +55,11 @@ body {
   color: var(--foreground);
 }
 
+/* PDF/print view is always white — keep formulas legible on screen and in print */
+.print-view .katex {
+  color: #111827;
+}
+
 .katex-display {
   margin: 1rem 0;
 }

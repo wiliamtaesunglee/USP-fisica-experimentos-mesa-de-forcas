@@ -81,7 +81,7 @@ export default function PrintView({ onBack }: { onBack: () => void }) {
   const rows = DISPLAY_ROWS.map((id) => MEASUREMENTS.find((m) => m.id === id)!);
 
   return (
-    <div className="bg-white text-gray-900 min-h-screen">
+    <div className="print-view bg-white text-gray-900 min-h-screen">
       {/* Back button — hidden in print */}
       <div className="print:hidden fixed top-4 right-4 z-50">
         <button
